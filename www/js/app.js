@@ -13,15 +13,21 @@ angular.module('a2h2', ['ngRoute'])
 				}
 			}
 		})
-		.otherwise('/questions/0')
+		.otherwise('/questions/1')
 })
 
 .provider('SurveyService', function() {
-	var questions = {};
+	var rawQuestions = {};
+	var provider = {
+		question: function(id, data) { 
+			rawQuestions[id] = data; 
+			return provider;
+		},
+		$get: function($q, choicesFilter) {
+			var questions = _.mapValues(rawQuestions, function(question) {
+				return _.extend({}, question, { responses: choicesFilter(question.responses) });
+			});
 
-	return {
-		addQuestion: function(id, data) { questions[id] = data; },
-		$get: function($q) {
 			return {
 				getQuestion: function(id) {
 					return $q.resolve(questions[id]);			
@@ -29,18 +35,30 @@ angular.module('a2h2', ['ngRoute'])
 			}
 		}
 	}
+
+	return provider;
 })
 
-.config(function(SurveyServiceProvider) {
-	SurveyServiceProvider.addQuestion(0, {
-		text: 'this is the sample data'
-	});
+.provider('IconService', function() {
+	var icons = {};
+	var provider = {
+		icon: function(name, url) { 
+			icons[name] = url;
+			return provider;
+		},
+		$get: function() {
+			return {
+				getUrl: function(name) { 
+					return icons[name] 
+				}
+			}
+		}
+	}
+
+	return provider;
 })
+
 
 .controller('SurveyQuestionController', function($scope, question) {
-	$scope.text = question.text;	
-})
-
-.controller('TestController', function($scope) {
-	$scope.text = 'we did it! Angular.js has happened';
+	$scope.question = question;	
 });

@@ -1,0 +1,9 @@
+h1.question {
+	text-align: center;
+}
+
+.visual-scale .response {
+	display: inline-block;
+	list-style: none;
+}
+

@@ -1,1 +1,12 @@
-<p>{{text}}</p>
+<div class="survey-question">
+	<h1 class="question">
+		{{question.text}}
+	</h1>
+	<ul class="responses"> 
+		<li class="response" ng-repeat="response in question.responses">
+			<a ng-href="#/questions/{{response.nextId}}" 
+			   ng-bind-html="response.text">
+			</a>
+		</li>
+	</ul>
+</div>
