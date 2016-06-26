@@ -1,0 +1,32 @@
+{
+  "name": "a2h2-2016",
+  "version": "1.0.0",
+  "description": "An A2 Health Hacks 2016 entry",
+  "engines": { "node": "6.2.2" },
+  "main": "server.js",
+  "dependencies": {
+    "browser-sync": "^2.13.0",
+    "cheerio": "^0.19.0",
+    "csp-parse": "^0.0.2",
+    "elementtree": "^0.1.6",
+    "express": "^4.14.0",
+    "glob": "^5.0.15",
+    "npm": "^2.15.8",
+    "plist": "^1.2.0",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjeffery/a2h2-2016.git"
+  },
+  "author": "mjeffery",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mjeffery/a2h2-2016/issues"
+  },
+  "homepage": "https://github.com/mjeffery/a2h2-2016#readme"
+}

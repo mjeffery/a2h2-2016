@@ -3,10 +3,13 @@
 		{{question.text}}
 	</h1>
 	<div ng-switch="question.type">
-		<ul class="responses" ng-switch-when="multiple-selection">
-			<li class="response" ng-repeat="response in question.responses">
-				<input type="checkbox"/>
-				<span ng-bind-html="response.text"></span>
+		<ul class="responses" ng-class="'multiple-selection'" ng-switch-when="multiple-selection">
+			<li class="response" ng-repeat="response in question.responses" ng-click="toggleIndex($index)">
+			<input type="checkbox" name="choice-{{$index}}" class="big-checkbox" ng-checked="values[$index]" />
+				<label class="checkbox-label" for="choice-{{$index}}"></label>
+				<div class="response-text">
+					<span ng-bind-html="response.text"></span>
+				</div>
 			</li>
 			<li class="continue">
 				<a href="#/questions/{{question.nextId}}">
@@ -14,8 +17,8 @@
 				</a>
 			</li>
 		</ul>
-		<ul class="responses" ng-switch-default>
-			<li class="response" ng-repeat="response in question.responses">
+		<ul class="responses" ng-class="question.type" ng-switch-default>
+			<li class="response" ng-repeat="response in question.responses"> 
 				<a ng-href="#/questions/{{response.nextId}}" 
 				   ng-bind-html="response.text">
 				</a>

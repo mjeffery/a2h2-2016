@@ -23,7 +23,7 @@ angular.module('a2h2')
 		.question('1', {
 			text: 'How are you feeling today?',
 			type: 'icon-scale',
-			responses: '*sad*:2|*sad*:2|*sad*:2|*sad*:2|*sad*:2'
+			responses: '*feeling-5*:2|*feeling-4*:2|*feeling-3*:2|*feeling-2*:2|*feeling-1*:2'
 		})
 
 		.question('2', {
@@ -48,7 +48,14 @@ angular.module('a2h2')
 		.question('2c', {
 			text: 'Is anyone else in your family sick?',
 			type: 'multiple-selection',
-			responses: 'No - no one else is sick|At least one grown-up',
+			responses: 'No - no one else is sick|At least one grown-up|At least one little sister or brother is sick|At least one older sister or brother is sick',
+			nextId: 'done'
+		})
+
+		.question('3', {
+			text: 'Did any of these other things happen today?',
+			type: 'multiple-selection',
+			responses: 'I went to the doctor|Someone in my family has a cold, but I feel fine|I have a friend who has a cold, but I feel fine|I got a flu vaccine <br/> (It\'s also called a flu shot!)',
 			nextId: 'done'
 		})
 })

@@ -1,4 +1,54 @@
+.responses.icon-scale {
+	display: flex;
+	justify-content: center;
+}
+
+.icon-scale .response {
+	padding: 10px;
+}
+
+.responses.multiple-choice {
+	
+}
+
+.multiple-choice .response {
+    font-size: 42px;
+    margin-left: 150px;
+    padding-bottom: 20px;
+}
+
+.responses {
+	list-style: none;
+}
+
+.multiple-selection .response, .continue {
+	font-size: 42px;
+	margin-left: 150px;
+	padding-bottom: 35px;
+}
+
+.response-text {
+	margin-left: 80px;
+	display: inline-block;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link, a:visited {
+	color: black;
+}
+
+.feeling-icon {
+	width: auto;
+	height: auto;
+	min-width: 100px;
+	max-width: 150px;
+}
+
 h1.question {
+	font-size: 42px;
 	text-align: center;
 }
 
@@ -7,3 +57,26 @@ h1.question {
 	list-style: none;
 }
 
+.big-checkbox {
+	display: none;
+}
+
+.big-checkbox + label {
+    background-image: url(/img/magnifying-glass.png);
+    width: 71px;
+    height: 75px;
+    padding: 0 0 0 0px;
+    display: inline-block;
+    position: absolute;
+    background-repeat: no-repeat;
+}
+
+.big-checkbox:checked + label {
+	background-image: url(/img/magnifying-glass-checked.png);
+	width: 71px;
+	height: 75px;
+	padding 0 0 0 0 px;
+	display: inline-block;
+	position: absolute;
+	background-repeat: no-repeat;
+}

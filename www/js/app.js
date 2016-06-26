@@ -48,13 +48,17 @@ angular.module('a2h2', ['ngRoute'])
 .provider('IconService', function() {
 	var icons = {};
 	var provider = {
-		icon: function(name, url) { 
-			icons[name] = url;
+		icon: function(name, url, cssClass) { 
+			icons[name] = {
+				url: url,
+				cssClass: cssClass || 'icon'
+			}
+
 			return provider;
 		},
 		$get: function() {
 			return {
-				getUrl: function(name) { 
+				getIconData: function(name) { 
 					return icons[name] 
 				}
 			}
@@ -67,4 +71,9 @@ angular.module('a2h2', ['ngRoute'])
 
 .controller('SurveyQuestionController', function($scope, question) {
 	$scope.question = question;	
+	$scope.values = _.map(question.responses, function() { return false });
+
+	$scope.toggleIndex = function(index) {
+		$scope.values[index] = !$scope.values[index];
+	};
 });
