@@ -4,6 +4,9 @@ angular.module('a2h2', ['ngRoute'])
 
 	$routeProvider
 		.when('/questions/:id', {
+			redirectTo: function(params) {
+				if(params.id === 'done') return '/completed'
+			},
 			templateUrl: 'templates/question.html',
 			controller: 'SurveyQuestionController',
 			resolve: {
@@ -12,6 +15,9 @@ angular.module('a2h2', ['ngRoute'])
 					return SurveyService.getQuestion(id);
 				}
 			}
+		})
+		.when('/completed', {
+			templateUrl: 'templates/completed.html'
 		})
 		.otherwise('/questions/1')
 })

@@ -5,12 +5,15 @@ angular.module('a2h2')
 		if( !angular.isString(value) ) return value;
 
 		return value.split('|').map(function(substr) {
-			var match = substr.match(/([^:]+):(.*)$/);
-
-			return {
-				nextId: match[2],
+			var match = substr.match(/([^:]+)(?::(.*))?$/);
+			var response = {
 				text: iconsFilter(match[1])
 			}
+
+			if( angular.isString(match[2]) )
+				response.nextId = match[2];
+
+			return response;
 		})
 	}
 })
@@ -35,5 +38,17 @@ angular.module('a2h2')
 			responses: 'Better:2b|Worse:2b|The Same:2b'
 		})
 
+		.question('2b', {
+			text: 'Which buttons show how you feel?',
+			type: 'multiple-selection',
+			responses: 'Cough|Sore Throat|Headache|Chills|Fever|Stuffy Nose|Body Aches|I was too sick to go to school|I had to go see the doctor',
+			nextId: '2c' 
+		})
 
+		.question('2c', {
+			text: 'Is anyone else in your family sick?',
+			type: 'multiple-selection',
+			responses: 'No - no one else is sick|At least one grown-up',
+			nextId: 'done'
+		})
 })
