@@ -1,4 +1,4 @@
-## A2 Health Hacks!
+# A2 Health Hacks!
 
 To get going:
 
