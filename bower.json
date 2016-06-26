@@ -1,0 +1,7 @@
+{
+  "name": "a2h2-2016",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.7"
+  }
+}
